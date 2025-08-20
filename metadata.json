@@ -1,0 +1,5 @@
+{
+  "name": "GOSID - The Global Open Source Intelligence Dashboard",
+  "description": "GOSID is a private, government-style OSINT hub designed to look authoritative and feared. It serves as a structured, centralized dashboard for open-source intelligence, with specialized divisions and resources.",
+  "requestFramePermissions": []
+}
