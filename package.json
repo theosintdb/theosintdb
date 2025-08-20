@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "postinstall": "npm --prefix server install && (test -f server/.env || cp server/.env.example server/.env) && npm --prefix server run prisma:generate && npm --prefix server run prisma:migrate || true && npm --prefix server run prisma:seed || true",
+    "postinstall": "npm --prefix server install && (test -f server/.env || (test -f server/.env.example && cp server/.env.example server/.env) || echo 'DATABASE_URL=\"file:./dev.db\"\nPORT=4000\nJWT_SECRET=\"change-me\"\nCORS_ORIGIN=\"http://localhost:5173\"' > server/.env) && npm --prefix server run prisma:generate && npm --prefix server run db:push && npm --prefix server run prisma:seed || true",
     "server:dev": "npm --prefix server run dev",
     "dev": "concurrently -n server,web -c yellow,cyan \"npm:server:dev\" \"vite\"",
     "build": "vite build",
